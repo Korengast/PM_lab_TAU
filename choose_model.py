@@ -7,17 +7,21 @@ from models.BayramogluetAl2015Model import BayramogluetAl2015Model
 from models.transfer_learning_resnet50 import TlResnet50
 from models.transfer_learning_vgg16 import TlVGG16
 
-EPOCHS = 10
-BATCH_SIZE = 30
+EPOCHS = 2
+BATCH_SIZE = 5
 
 __author__ = "Koren Gast"
 
 #data = Prepare_data.images_to_df('raw_data/')
 
 data_dir = 'array_data/4D/'
+print('loading data...')
 X_train = np.load(data_dir+'X_train.npy')
+print('...')
 X_valid = np.load(data_dir+'X_valid.npy')
+print('...')
 y_train = np.load(data_dir+'y_train.npy')
+print('...')
 y_valid = np.load(data_dir+'y_valid.npy')
 print('data loading completed')
 
