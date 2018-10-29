@@ -73,11 +73,12 @@ def images_to_df_4D_reduceSize(directory):
                                              ignore_index=True)
     raw_data_df = raw_data_df.groupby(['well/field'])['image_array'].apply(stack_arrays)
     raw_data_df = pd.DataFrame({'well/field': raw_data_df.index, 'image_array': raw_data_df.values})
-    raw_data_df['is_ill'] = raw_data_df['well/field'].apply(lambda w: 1 if w.startswith('C - 03') or
-                                                                           w.startswith('B - 03') else 0)
+    raw_data_df['is_ill'] = raw_data_df['well/field'].apply(lambda w: 1 if w.startswith('B - 03') or
+                                                                           w.startswith('C - 03') or
+                                                                           w.startswith('D - 03') else 0)
     return raw_data_df
 
 def stack_arrays(ser):
     return np.stack(ser)
 
-img_df = images_to_df_4D_reduceSize('raw_data/')
+img_df = images_to_df_4D_reduceSize('raw_data_test/')

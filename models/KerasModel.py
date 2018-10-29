@@ -38,3 +38,7 @@ class KerasModel(object):
 
     def load_model_weights(self, name):
         self.model.load_weights('Weights/' + name, by_name=False)
+
+    def cross_validation(self,X_train, X_valid, y_train, y_valid):
+        X = np.append(X_train, X_valid, axis=0)
+        y = np.append(y_train, y_valid, axis=0)

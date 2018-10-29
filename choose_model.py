@@ -23,12 +23,14 @@ __author__ = "Koren Gast"
 data_dir = 'array_data/4D_reduced/'
 print('loading data...')
 X_train = np.load(data_dir+'X_train.npy')
-print('...')
+print('train data loaded')
 X_valid = np.load(data_dir+'X_valid.npy')
-print('...')
+print('validation data loaded')
+X_test = np.load(data_dir+'X_test.npy')
+print('test data loaded')
 y_train = np.load(data_dir+'y_train.npy')
-print('...')
 y_valid = np.load(data_dir+'y_valid.npy')
+y_test = np.load(data_dir+'y_test.npy')
 print('data loading completed')
 
 # model = FCModel(X_train[0].shape, layers_num=3)
@@ -46,6 +48,5 @@ print()
 print("Train Accuracy = " + str(acc_train))
 acc_valid = model.evaluate(X_valid, y_valid)[1]
 print("Valid Accuracy = " + str(acc_valid))
-
-
-
+acc_test = model.evaluate(X_test, y_test)[1]
+print("Test Accuracy = " + str(acc_test))
