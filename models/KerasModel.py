@@ -26,10 +26,12 @@ class KerasModel(object):
         loss_acc = self.model.evaluate(x=x, y=y)
         return loss_acc
 
-    def predict(self, x):
+    def predict(self, x, prob=False):
         pred_prob = self.model.predict(x=x)
-        preds = np.round(pred_prob)
-        return preds
+        if prob:
+            return pred_prob
+        else:
+            return np.round(pred_prob)
 
     def save_model_weights(self, name):
         self.model.save_weights('Weights/' + name)

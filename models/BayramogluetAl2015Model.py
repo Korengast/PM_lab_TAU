@@ -11,8 +11,7 @@ class BayramogluetAl2015Model(KerasModel):
 
     def build(self, input_shape):
         X_input = Input(input_shape)
-        X = AveragePooling2D((20, 20))(X_input) # Reduce the image size
-        X = Conv2D(32, (5, 5), strides=(1, 1))(X)
+        X = Conv2D(32, (5, 5), strides=(1, 1))(X_input)
         X = MaxPooling2D((3, 3))(X)
         X = Conv2D(32, (5, 5), strides=(1, 1), activation='relu')(X)
         X = AveragePooling2D((3, 3))(X)
